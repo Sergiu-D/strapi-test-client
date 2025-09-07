@@ -18,7 +18,6 @@ const getHomePage = async () => {
 
 const Home = async () => {
   const {data} = await getHomePage();
-  console.dir(data, {depth: null});
   return (
     <Container>
       {
@@ -27,9 +26,9 @@ const Home = async () => {
             return <Hero key={block.id} data={block} />;
           }
 
-          if (block.__component === "blocks.benefits") {
-            return <Benefits key={block.id} data={block} />;
-          }
+          // if (block.__component === "blocks.benefits") {
+          //   return <Benefits key={block.id} data={block} />;
+          // }
         })
       }
       {/* <Hero /> */}

@@ -7,13 +7,14 @@ interface BenefitsProps {
   data: {
     imgPos?: "left" | "right";
     title: string;
-    desc: string;
+    description: string;
     image: any;
-    bullets: {
+    items: {
       title: string;
-      desc: string;
+      description: string;
       icon: React.ReactNode;
     }[];
+    imagePosition?: "left" | "right";
   };
 }
 export const Benefits = (props: Readonly<BenefitsProps>) => {
@@ -33,8 +34,6 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
             height={image.height}
             alt={image.alternativeText}
             className={"object-cover"}
-            placeholder="blur"
-            blurDataURL={image.src}
           />
         </div>
       </div>

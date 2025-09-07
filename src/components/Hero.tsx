@@ -40,7 +40,6 @@ export const Hero = ({data}: {data: any}) => {
               className={"object-cover"}
               alt={data.image.alternativeText}
               loading="eager"
-              placeholder="blur"
             />
           </div>
         </div>
