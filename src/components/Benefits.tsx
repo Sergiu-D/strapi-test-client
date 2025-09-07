@@ -2,22 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Container }  from "@/components/Container";
 
-interface BenefitsProps {
-  imgPos?: "left" | "right";
-  data: {
-    imgPos?: "left" | "right";
-    title: string;
-    description: string;
-    image: any;
-    items: {
-      title: string;
-      description: string;
-      icon: React.ReactNode;
-    }[];
-    imagePosition?: "left" | "right";
-  };
-}
-export const Benefits = (props: Readonly<BenefitsProps>) => {
+export const Benefits = (props: any) => {
   const { data } = props;
   const {title, description, image, items, imagePosition} = data
   return (
@@ -29,7 +14,7 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
       >
         <div>
           <Image
-            src={image.url}
+            src={`http://127.0.0.1:1337${image.url}`}
             width={image.width}
             height={image.height}
             alt={image.alternativeText}
@@ -55,7 +40,7 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
           </div>
 
           <div className="w-full mt-5">
-            {items.map((item, index) => (
+            {items.map((item: any, index: number) => (
               <Benefit key={index} title={item.title} icon={item.icon}>
                 {item.description}
               </Benefit>
@@ -67,14 +52,22 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
   );
 };
 
-function Benefit(props: {title: string, icon: React.ReactNode, children: string}) {
+function Benefit(props: {title: string, icon: any, children: string}) {
   const {title, icon, children} = props;
   return (
       <div className="flex items-start mt-8 space-x-3">
         <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-indigo-500 rounded-md w-11 h-11 ">
-          {React.cloneElement(icon as React.ReactElement, {
-            className: "w-7 h-7 text-indigo-50",
-          })}
+          {icon && icon.url ? (
+            <Image
+              src={`http://127.0.0.1:1337${icon.url}`}
+              width={28}
+              height={28}
+              alt={icon.alternativeText || title}
+              className="w-7 h-7 text-indigo-50"
+            />
+          ) : (
+            <div className="w-7 h-7 bg-indigo-300 rounded"></div>
+          )}
         </div>
         <div>
           <h4 className="text-xl font-medium text-gray-800 dark:text-gray-200">

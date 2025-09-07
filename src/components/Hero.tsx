@@ -21,12 +21,14 @@ export const Hero = ({data}: {data: any}) => {
                 target={data.cta.isExternal ? "_blank" : "_self"}
                 rel={data.cta.isExternal ? "noopener" : ""}
                 className={`px-8 py-4 text-lg font-medium text-center border border-transparent rounded-md ${
-                  data.cta.variant === "blue" && "bg-indigo-600 text-white" ||
-                  data.cta.variant === "white" && "bg-white text-indigo-600" || 
-                  data.cta.variant === "outline" && "bg-transparent border-2 border-indigo-600 text-indigo-600"
+                  (data.cta.variant === "blue" && "bg-indigo-600 text-white") ||
+                  (data.cta.variant === "white" &&
+                    "bg-white text-indigo-600") ||
+                  (data.cta.variant === "outline" &&
+                    "bg-transparent border-2 border-indigo-600 text-indigo-600")
                 }`}
               >
-                {data.cta?.text}
+                {data.cta.text}
               </a>
             </div>
           </div>
@@ -34,7 +36,7 @@ export const Hero = ({data}: {data: any}) => {
         <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="">
             <Image
-              src={data.image.url}
+              src={`http://127.0.0.1:1337${data.image.url}`}
               width={data.image.width}
               height={data.image.height}
               className={"object-cover"}

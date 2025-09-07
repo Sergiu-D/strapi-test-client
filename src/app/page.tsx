@@ -26,9 +26,9 @@ const Home = async () => {
             return <Hero key={block.id} data={block} />;
           }
 
-          // if (block.__component === "blocks.benefits") {
-          //   return <Benefits key={block.id} data={block} />;
-          // }
+          if (block.__component === "blocks.benefits") {
+            return <Benefits key={block.id} data={block} />;
+          }
         })
       }
       {/* <Hero /> */}
